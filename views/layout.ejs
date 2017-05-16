@@ -57,7 +57,11 @@
             </ul>
             <ul class="nav navbar-nav" style="float:right">
                 <li>
-                    <a href="/login">Login</a>
+                    <% if(user){%>
+                        <a href="/logout">Logout</a>
+                    <% }else{ %>
+                        <a href="/login">Login</a>
+                    <% } %>
                 </li>
             </ul>
         </div>

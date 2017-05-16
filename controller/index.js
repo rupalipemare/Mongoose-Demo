@@ -2,10 +2,12 @@
 var User = require('./../model/users');
 module.exports = {
     index : function (request, response) {
-        response.render('index');
+        var user =  request.session.user;
+        response.render('index',{ 'user' : user});
     },
     login : function (request, response) {
-        response.render('login');
+        var user;
+        response.render('login',{user : user});
     },
     userList : function(request, response){
         User.find(function(err, data){
@@ -17,7 +19,8 @@ module.exports = {
         });
     },
     addUser : function(request, response){
-        response.render('addUser');
+        var user =  request.session.user;
+        response.render('addUser',{ 'user' : user});
     },
     saveUser : function (request, response) {
         var user = new User(request.body);
