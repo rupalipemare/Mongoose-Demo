@@ -1,0 +1,19 @@
+<% extend('layout') %>
+<div class="content">
+    <div class="col-md-6 subContent">
+        <form action="/updateUser" method="post">
+            <div class="form-group">
+                <input type="hidden" name="id" value="<%= user._id %>">
+                <label>UserName</label>
+                <input type="text" name="username" value="<%= user.username %>">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" value="<%= user.password %>">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit">
+            </div>
+        </form>
+    </div>
+</div>

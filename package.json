@@ -1,0 +1,25 @@
+{
+  "name": "mongoosedemo",
+  "version": "1.0.0",
+  "description": "Demo having mongoose db use",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "index.js"
+  },
+  "author": "Rupali Pemare",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "bower": "^1.8.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-ejs-extend": "0.0.1",
+    "express-session": "^1.15.2",
+    "mongoose": "^4.9.8",
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  }
+}

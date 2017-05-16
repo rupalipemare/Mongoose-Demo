@@ -1,0 +1,42 @@
+<% extend('layout') %>
+
+<div class="container">
+    <div class="row" style="float: left;width:50%">
+        <div class="">
+            <form method="post" action="/login">
+                <h4 class="form-group-lg"> Sign In </h4>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type='text' class="form-control" id="username" name="username"/>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type='password' class="form-control" id='password' name="password"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-submit" value="Login"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" style="float: right;width:50%">
+        <div class="">
+            <form method="post" action="/saveUser">
+                <h4 class="form-group-lg"> Sign Up </h4>
+                <div class="form-group">
+
+                <label>Username</label>
+                <input type='text' class="form-control" id="username" name="username"/>
+                </div>
+                <div class="form-group">
+                <label>Password</label>
+                <input type='password' class="form-control" id='password' name="password"/>
+                </div>
+                <div class="form-group">
+                <input type="submit" class="btn btn-submit" value="Sign In"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

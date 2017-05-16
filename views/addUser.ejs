@@ -1,0 +1,24 @@
+<% extend('layout') %>
+
+<div class="container">
+    <div class="row" style="width:50%">
+        <div class="">
+            <form method="post" action="/saveUser">
+                <h4 class="form-group-lg" style="text-align: center"> Add User </h4>
+                <div class="form-group">
+
+                    <label>Username</label>
+                    <input type='text' class="form-control" id="username" name="username"/>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type='password' class="form-control" id='password' name="password"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-submit" value="Sign In"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
