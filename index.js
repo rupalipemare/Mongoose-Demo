@@ -22,6 +22,7 @@ app.use(session({
 passport(app);
 
 // connect to mongodb database
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/mongoosedemo');
 
 // call the routes
