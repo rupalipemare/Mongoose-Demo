@@ -14,7 +14,7 @@ router.post('/login', function(request, response, next){
         request.logIn(user, function(err) {
             if (err) { return next(err); }
             request.session.user = request.user;
-            return response.redirect('/userList');
+            response.redirect('/userList');
         });
     })(request, response, next);
 });

@@ -21,7 +21,7 @@ module.exports = function () {
                     compare : password,
                     compareTo : user.password
                 };
-                User.comparePassword(data, function(err, data){
+                user.comparePassword(data, function(err, data){
                     if (data == false) {
                         done(null, false, {message: 'Invalid Password'});
                     } else {

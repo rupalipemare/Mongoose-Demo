@@ -36,8 +36,19 @@ user.statics = {
             }
         });
     },
+    /*comparePassword : function(data, cb){
+        bcrypt.compare(data.compare, data.compareTo, function (err, passRes) {
+            if (err) {
+                return cb(err);
+            } else {
+                return cb(null, passRes);
+            }
+        });
+    },*/
+};
+
+user.methods = {
     comparePassword : function(data, cb){
-        console.log(data);
         bcrypt.compare(data.compare, data.compareTo, function (err, passRes) {
             if (err) {
                 return cb(err);
@@ -47,7 +58,6 @@ user.statics = {
         });
     },
 };
-
 // we need to create a model using it
 var User = mongoose.model('User', user);
 
