@@ -80,11 +80,9 @@ module.exports = {
         var userInfo;
         var loginUser = request.session.user;
         var id = request.body.id;
-        console.log(id + "id");
         User.findById(id, function (err, result) {
             if (err) {
-                console.log('in find by id err');
-                // console.log(err);
+                console.log(err);
             } else {
                 userInfo = result;
                 userInfo.name = request.body.name;
