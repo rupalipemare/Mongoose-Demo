@@ -8,7 +8,9 @@ Install npm in the folder as the package.json has all the required nodejs module
 Basic authenication for login is done using passport and passport local
 We have simple dashboard from where in we login or sign up
 
-As the demo requires mongoDb , make sure mongodb is insatlled in system
+As the demo requires mongoDb , make sure mongodb is installed in system
 
 Simple userListing , add new user, update user and delete user is done
+Have also added validation to user schema during create and update user.
+Used pre save middleware to bcrypt the user password during saving the data to mongodb.
 

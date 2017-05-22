@@ -49,15 +49,17 @@
                     <a href="/userList">Users</a>
                 </li>
                 <li>
-                    <a href="#">Services</a>
+                    <a href="/addUser">Add New User</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav" style="float:right">
-                <li>
-                    <% if(user){%>
+                <% if(userLoggedIn){%>
+                    <li>
+                        <a href="">Hello <%= userLoggedIn.name %></a></li>
+                    <li>
                         <a href="/logout">Logout</a>
                     <% }else{ %>
                         <a href="/login">Login</a>

@@ -17,11 +17,7 @@ module.exports = function () {
                 console.log("err "+err);
             }
             if (user) {
-                var data = {
-                    compare : password,
-                    compareTo : user.password
-                };
-                user.comparePassword(data, function(err, data){
+                user.comparePassword(password, function(err, data){
                     if (data == false) {
                         done(null, false, {message: 'Invalid Password'});
                     } else {
@@ -29,6 +25,8 @@ module.exports = function () {
                         done(err, user);
                     }
                 });
+            }else{
+                done(null, false, {message : "Invalid Username"})
             }
         });
     }));

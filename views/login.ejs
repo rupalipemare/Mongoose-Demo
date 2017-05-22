@@ -1,6 +1,9 @@
 <% extend('layout') %>
 
 <div class="container">
+    <% if(message){%>
+        <div class="alert alert-danger alert-error"><%= message%></div>
+    <% }%>
     <div class="row" style="float: left;width:50%">
         <div class="">
             <form method="post" action="/login">
@@ -18,8 +21,9 @@
                 </div>
             </form>
         </div>
+        <span>Don't have a account <a href="/addUser">Register here</a></span>
     </div>
-    <div class="row" style="float: right;width:50%">
+<!--    <div class="row" style="float: right;width:50%">
         <div class="">
             <form method="post" action="/saveUser">
                 <h4 class="form-group-lg"> Sign Up </h4>
@@ -37,6 +41,6 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div>-->
 </div>
 </div>

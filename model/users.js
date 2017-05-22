@@ -1,33 +1,59 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
+var saltRounds = 10;
 
-
-//child address schema
-var addressSchema = new Schema({
-    line1: String,
-    line2: String,
-    city: String,
-    state: String,
-    country: String,
-    pincode: Number
-});
+//custom validator
+var minDigitsvalidator = function(val) {
+        return val.toString().length >= 6;
+    };
 
 //create schema
 //parent User Schema
 var user = new Schema({
-    id: Number,
-    name: String,
-    username: {type: String, required: true, unique: true},
-    password: {type: String, required: true},
-    address: [addressSchema],
+    name:{type: String, required: [true, '{PATH} is required']},
+    username: {type: String, required: [true, '{PATH} is required']},
+    password: {type: String, required: [true, '{PATH} is required'] },
+    line1: {type: String, required: [true, '{PATH} is required']},
+    line2: {type: String, required: [true, '{PATH} is required']},
+    city: {type: String, required: [true, '{PATH} is required']},
+    state: {type: String, required: [true, '{PATH} is required']},
+    country: {type: String, required: [true, '{PATH} is required']},
+    pincode: {type: Number, required: [true, '{PATH} is required'],
+        validate: [minDigitsvalidator, '{PATH} must have 6 digits']},
     created_at: {type: Date, default: Date.now},
-    updated_at: Date
+    updated_at: {type: Date, default: Date.now}
 });
 
+/*user.pre('update', function(next) {
+});
+user.pre('validate', function(next) {
+});*/
+
+// before saving document to mongodb
+user.pre('save', function (next) {
+    var self = this;
+    mongoose.models["User"].findOne({username : self.username}, function(err, user) {
+        if (!user){
+            next();
+        }else{
+            next(new Error("Username already exists!"));
+        }
+    });
+    bcrypt.hash(self.password, saltRounds, function (err, hash) {
+        if (err) {
+            return next (err);
+        } else {
+            self.password = hash;
+            next();
+        }
+    });
+
+});
+
+// static methods which can be called on document
 user.statics = {
     bcryptpassword: function (data, cb) {
-        var saltRounds = 10;
         bcrypt.hash(data, saltRounds, function (err, hash) {
             if (err) {
                 return cb(err);
@@ -36,20 +62,12 @@ user.statics = {
             }
         });
     },
-    /*comparePassword : function(data, cb){
-        bcrypt.compare(data.compare, data.compareTo, function (err, passRes) {
-            if (err) {
-                return cb(err);
-            } else {
-                return cb(null, passRes);
-            }
-        });
-    },*/
 };
 
+// instance methods which can be called on instacnce only
 user.methods = {
-    comparePassword : function(data, cb){
-        bcrypt.compare(data.compare, data.compareTo, function (err, passRes) {
+    comparePassword: function (data, cb) {
+        bcrypt.compare(data, this.password, function (err, passRes) {
             if (err) {
                 return cb(err);
             } else {
@@ -58,6 +76,7 @@ user.methods = {
         });
     },
 };
+
 // we need to create a model using it
 var User = mongoose.model('User', user);
 

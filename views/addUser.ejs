@@ -1,18 +1,55 @@
 <% extend('layout') %>
 
 <div class="container">
+    <% if(message){ %>
+    <div class="alert alert-danger alert-error">
+        <%= message %>
+        <!--<ul>
+            <% for(var i =0; i< message.length; i++){ %>
+                <li><%= message %></li>
+            <% } %>
+        </ul>-->
+    </div>
+    <% } %>
     <div class="row" style="width:50%">
         <div class="">
             <form method="post" action="/saveUser">
                 <h4 class="form-group-lg" style="text-align: center"> Add User </h4>
                 <div class="form-group">
-
-                    <label>Username</label>
+                    <label class="form-label" >Name</label>
+                    <input type='text' class="form-control" id="name" name="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" >Username</label>
                     <input type='text' class="form-control" id="username" name="username"/>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label class="form-label" >Password</label>
                     <input type='password' class="form-control" id='password' name="password"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Address line1 </label>
+                    <input type='text' class="form-control" value="" id="line1" name="line1"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Address line2 </label>
+                    <input type='text' class="form-control" id="line2" name="line2"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">City</label>
+                    <input type='text' class="form-control" id="city" name="city"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">State</label>
+                    <input type='text' class="form-control" id="state" name="state"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Country</label>
+                    <input type='text' class="form-control" id="country" name="country"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Pincode</label>
+                    <input type='text' class="form-control" id="pincode" name="pincode"/>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-submit" value="Sign In"/>

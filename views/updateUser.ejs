@@ -1,19 +1,59 @@
 <% extend('layout') %>
-<div class="content">
-    <div class="col-md-6 subContent">
-        <form action="/updateUser" method="post">
-            <div class="form-group">
-                <input type="hidden" name="id" value="<%= user._id %>">
-                <label>UserName</label>
-                <input type="text" name="username" value="<%= user.username %>">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" value="<%= user.password %>">
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Edit">
-            </div>
-        </form>
+<div class="container">
+    <% if(message){ %>
+    <div class="alert alert-danger alert-error">
+        <%= message %>
+        <!--<ul>
+            <% for(var i =0; i< message.length; i++){ %>
+                <li><%= message %></li>
+            <% } %>
+        </ul>-->
+    </div>
+    <% } %>
+    <div class="content">
+        <div class="row" style="width:50%">
+            <form action="/updateUser" method="post">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type='text' class="form-control" id="name" name="name" value="<%= user.name %>"/>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="id" value="<%= user._id %>">
+                    <label>UserName</label>
+                    <input type="text" class="form-control" name="username" value="<%= user.username %>">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="form-group">
+                    <label>Address line1 </label>
+                    <input type='text' class="form-control" id="line1" name="line1" value="<%= user.line1 %>"/>
+                </div>
+                <div class="form-group">
+                    <label>Address line2 </label>
+                    <input type='text' class="form-control" id="line2" name="line2" value="<%= user.line2 %>"/>
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input type='text' class="form-control" id="city" name="city" value="<%= user.city %>"/>
+                </div>
+                <div class="form-group">
+                    <label>State</label>
+                    <input type='text' class="form-control" id="state" name="state" value="<%= user.state %>"/>
+                </div>
+                <div class="form-group">
+                    <label>Country</label>
+                    <input type='text' class="form-control" id="country" name="country" value="<%= user.country %>">
+                </div>
+                <div class="form-group">
+                    <label>Pincode</label>
+                    <input type='text' class="form-control" id="pincode" name="pincode" value="<%= user.pincode %>">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Edit">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
