@@ -35,20 +35,18 @@ user.pre('save', function (next) {
     var self = this;
     mongoose.models["User"].findOne({username : self.username}, function(err, user) {
         if (!user){
-            next();
+            bcrypt.hash(self.password, saltRounds, function (err, hash) {
+                if (err) {
+                    return next (err);
+                } else {
+                    self.password = hash;
+                    next();
+                }
+            });
         }else{
             next(new Error("Username already exists!"));
         }
     });
-    bcrypt.hash(self.password, saltRounds, function (err, hash) {
-        if (err) {
-            return next (err);
-        } else {
-            self.password = hash;
-            next();
-        }
-    });
-
 });
 
 // static methods which can be called on document
